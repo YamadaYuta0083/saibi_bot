@@ -2,7 +2,6 @@ import os
 from discord.ext import commands
 import random
 import asyncio
-
 import os
 
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -13,7 +12,7 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-TARGET_NAMES = ["康男", "ヤスオ", "ヤスヲ","やすお","YASUO","やすヲ"."とある介護士"]
+TARGET_NAMES = ["康男", "ヤスオ", "ヤスヲ","やすお","YASUO","やすヲ","とある介護士"]
 
 @bot.event
 async def on_ready():
@@ -47,6 +46,4 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-
-bot.run(TOKEN)
 
