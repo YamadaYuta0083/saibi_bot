@@ -1,11 +1,10 @@
-import os
+import discord
 from discord.ext import commands
 import random
 import asyncio
 import os
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-bot.run(TOKEN)
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -25,21 +24,18 @@ async def on_message(message):
 
     content = message.content
 
-    # ① 名前を検知したらリプライ形式で返信
+    # 名前を検知
     if any(name in content for name in TARGET_NAMES):
-        # リプライ形式で送信
         reply = await message.reply("僕はバカです！")
 
-        # ② ランダムで追加の「僕はバカです！」を送る
-        repeat_times = random.randint(1, 10)  # 1〜10回ランダム
+        repeat_times = random.randint(1, 10)
 
         for _ in range(repeat_times):
-            await asyncio.sleep(random.uniform(0.5, 1.5))  # ランダムで少し待つ
+            await asyncio.sleep(random.uniform(0.5, 1.5))
             await message.channel.send("僕はバカです！")
 
         return
 
-    # ③ 「？？？」に反応
     if "？？？" in content:
         await message.reply("誰ぞ？")
         return
@@ -47,3 +43,4 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
+bot.run(TOKEN)
