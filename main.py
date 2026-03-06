@@ -31,7 +31,7 @@ async def on_message(message):
         repeat_times = random.randint(1, 10)
 
         for _ in range(repeat_times):
-            await asyncio.sleep(random.uniform(0.5, 1.5))
+            await asyncio.sleep(2.5)
             await message.channel.send("僕はバカです！")
 
         return
@@ -44,3 +44,4 @@ async def on_message(message):
 
 
 bot.run(TOKEN)
+
